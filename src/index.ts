@@ -44,10 +44,10 @@ const backendDependencies = {
  * `/openmrs/spa/hello`.
  */
 function setupOpenMRS() {
-  const moduleName = "@openmrs/esm-template-app";
+  const moduleName = "@openmrs/esm-case-report-app";
 
   const options = {
-    featureName: "hello-world",
+    featureName: "Case Report",
     moduleName,
   };
 
@@ -58,6 +58,10 @@ function setupOpenMRS() {
       {
         load: getAsyncLifecycle(() => import("./hello"), options),
         route: "hello",
+      },
+      {
+        load: getAsyncLifecycle(() => import("./case-reports"), options),
+        route: "case-reports",
       },
     ],
     extensions: [
@@ -85,6 +89,16 @@ function setupOpenMRS() {
           options
         ),
         slot: "Boxes",
+      },
+      {
+        name: "case-reports-link",
+        slot: "app-menu-slot",
+        load: getAsyncLifecycle(
+          () => import("./case-reports-menu-link.component"),
+          options
+        ),
+        online: true,
+        offline: true,
       },
     ],
   };
