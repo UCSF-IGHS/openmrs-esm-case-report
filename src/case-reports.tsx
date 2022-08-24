@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Tab, Tabs } from "carbon-components-react";
+import { DataTableSkeleton, Tab, Tabs } from "carbon-components-react";
 import CaseReportsTable from "./case-reports-table";
 import { fetchAllCaseReports, fetchSubmittedCaseReports } from "./api/api";
 import moment from "moment";
@@ -7,6 +7,7 @@ import moment from "moment";
 const CaseReports: React.FC = () => {
   const [queuedReports, setQueuedReports] = useState<CaseReport[]>([]);
   const [submittedReports, setSubmittedReports] = useState<CaseReport[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function convertReport(r: any): CaseReport {
     const caseReport: CaseReport = {
@@ -25,35 +26,48 @@ const CaseReports: React.FC = () => {
 
   useEffect(() => {
     fetchSubmittedCaseReports().then(({ data }) => {
+      setIsLoading(true);
       if (data.results?.length > 0) {
         let reports: CaseReport[] = [];
         data.results.map((r) => {
           reports.push(convertReport(r));
         });
         setSubmittedReports(reports);
+        setIsLoading(false);
       }
     });
 
     fetchAllCaseReports().then(({ data }) => {
+      setIsLoading(true);
       if (data.results?.length > 0) {
         let reports: CaseReport[] = [];
         data.results.map((r) => {
           reports.push(convertReport(r));
         });
         setQueuedReports(reports);
+        setIsLoading(false);
       }
     });
   }, []);
 
   return (
-    <Tabs>
-      <Tab label="Case Reports Queue">
-        <CaseReportsTable caseReports={queuedReports} />
-      </Tab>
-      <Tab label="Submitted Case Reports">
-        <CaseReportsTable caseReports={submittedReports} />
-      </Tab>
-    </Tabs>
+    <>
+      {isLoading ? (
+        <DataTableSkeleton rowCount={5} />
+      ) : (
+        <Tabs>
+          <Tab label="Case Reports Queue">
+            <CaseReportsTable caseReports={queuedReports} isActionable={true} />
+          </Tab>
+          <Tab label="Submitted Case Reports">
+            <CaseReportsTable
+              caseReports={submittedReports}
+              isActionable={false}
+            />
+          </Tab>
+        </Tabs>
+      )}
+    </>
   );
 };
 
