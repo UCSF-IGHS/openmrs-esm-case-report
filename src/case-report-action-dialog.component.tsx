@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger, no-console */
 import { useTranslation } from "react-i18next";
 import { Modal } from "carbon-components-react";
 import React, { useState } from "react";
@@ -71,7 +70,7 @@ export const CaseReportActionModal: React.FC<{
   const caseReportAction = () => {
     if (action === "Dismiss") {
       try {
-        //dismissCaseReport(uuid);
+        dismissCaseReport(uuid);
         showToast({
           kind: "success",
           critical: true,
@@ -87,8 +86,6 @@ export const CaseReportActionModal: React.FC<{
       close();
       handleSubmit();
     }
-
-    //window.location.reload();
   };
 
   return (

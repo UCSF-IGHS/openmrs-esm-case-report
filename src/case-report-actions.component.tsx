@@ -1,9 +1,6 @@
-/* eslint-disable no-debugger, no-console */
 import { OverflowMenu, OverflowMenuItem } from "carbon-components-react";
 import React, { useState } from "react";
 import styles from "../src/root.scss";
-import { showToast } from "@openmrs/esm-framework";
-import { dismissCaseReport } from "./api/api";
 import { CaseReportActionDialog } from "./case-report-action-dialog.component";
 
 export interface CaseReportActionsProps {

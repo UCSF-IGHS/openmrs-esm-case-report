@@ -59,12 +59,12 @@ const CaseReports: React.FC = () => {
           <Tab label="Case Reports Queue">
             <CaseReportsTable caseReports={queuedReports} isActionable={true} />
           </Tab>
-          {/* <Tab label="Submitted Case Reports">
+          <Tab label="Submitted Case Reports">
             <CaseReportsTable
               caseReports={submittedReports}
               isActionable={false}
             />
-          </Tab> */}
+          </Tab>
         </Tabs>
       )}
     </>

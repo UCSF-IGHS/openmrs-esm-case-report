@@ -1,8 +1,6 @@
-/* eslint-disable no-debugger, no-console */
 import React, { useCallback, useEffect, useState } from "react";
 import {
   DataTable,
-  DataTableSkeleton,
   Pagination,
   Search,
   Table,
