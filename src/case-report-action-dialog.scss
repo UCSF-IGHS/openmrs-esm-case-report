@@ -1,0 +1,12 @@
+@import './root.scss';
+
+.header {
+    @include carbon--type-style("productive-heading-03");
+    color: $text-01;
+  }
+  
+  .body {
+    @include carbon--type-style("body-long-01");
+    color: $text-01;
+  }
+  

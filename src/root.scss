@@ -1,0 +1,20 @@
+@import "~carbon-components/scss/globals/scss/vendor/@carbon/elements/scss/type/styles";
+@import "~carbon-components/src/globals/scss/vendor/@carbon/layout/scss/generated/spacing";
+@import "~carbon-components/src/globals/scss/vendor/@carbon/layout/scss/generated/layout";
+@import "carbon-components/scss/globals/scss/typography.scss";
+@import "~@openmrs/esm-styleguide/src/vars";
+
+.searchField {
+    width: 20%;
+    background: #fff;
+    border-bottom: 1px;
+    margin: 2px 0px 0px px;
+    margin-right: auto;
+  }
+  
+  .searchBox {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-bottom: 5px;
+  }
